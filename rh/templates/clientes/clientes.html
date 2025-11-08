@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Clientes{% endblock %}
+
+{% block content %}
+    <h1> Clientes</h1>
+    
+    {% for clientes in clientes %}
+    <section class="card-cliente">
+        {% if cliente.foto.url != null %}
+        <img src="{{ cliente.foto.url }}" alt="Foto de {{cliente.nome}}">
+        {% else %}
+        <img src="/static/images/usuario-sem-imagem.png" alt="Foto padrão de usuário">
+        {% endif %}
+        <div class="info-cliente">
+            <h4>{{cliente.nome}}</h4>
+            <p>Idade: {{cliente.idade}} </p>
+            <p>E-mail: {{cliente.email}} </p>
+            <p>Contato: {{cliente.contato}}</p>
+        </div>
+    </section>
+    {% endfor %}
+
+{% endblock %}

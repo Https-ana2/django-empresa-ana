@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Contatos{% endblock %}
+
+{% block content %}
+<h2>Seja nosso Cliente!</h2>
+<p>Seu cadastro será salvo em nosso banco de dados.</p>
+<form method="POST" class="col-md-6" >
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form> 
+
+{% comment %} <form method="POST" class="col-md-6" >
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="{{ form.nome.id_for_label }}" class="form-label">
+            {{ form.nome.label }}
+        </label>
+        {{ form.nome }} {% if form.nome.errors %}
+            <div class="alert alert-danger">
+                {{ form.nome.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.idade.id_for_label }}" class="form-label">
+            {{ form.idade.label }}
+        </label>
+        {{ form.idade }} {% if form.idade.errors %}
+            <div class="alert alert-danger">
+                {{ form.idade.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.email.id_for_label }}" class="form-label">
+            {{ form.email.label }}
+        </label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <div class="alert alert-danger">
+                {{ form.email.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.contato.id_for_label }}" class="form-label">
+            {{ form.contato.label }}
+        </label>
+        {{ form.contato }}
+        {% if form.contato.errors %}
+            <div class="alert alert-danger">
+                {{ form.contato.errors }}
+            </div>
+        {% endif %}
+    </div>
+    
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form> {% endcomment %}
+    
+
+{% endblock %}
