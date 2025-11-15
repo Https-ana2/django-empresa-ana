@@ -4,7 +4,7 @@
 {% block content %}
     <h1> Clientes</h1>
     
-    {% for clientes in clientes %}
+    {% for cliente in clientes %}
     <section class="card-cliente">
         {% if cliente.foto.url != null %}
         <img src="{{ cliente.foto.url }}" alt="Foto de {{cliente.nome}}">

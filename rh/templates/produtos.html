@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Produtos{% endblock %}
+
+{% block content %}
+    <h1> Produtos</h1>
+    
+    {% for produto in produtos %}
+    
+    <section class="card-produtos">
+        {% if produto.foto.url != null %}
+        <img src="{{ produto.foto.url }}" alt="Foto de {{produto.nome}}">
+        {% else %}
+        <img src="/static/images/produto-sem-imagem.png" alt="Foto padrão de produto">
+        {% endif %}
+        <div class="info-produto">
+            <h4>{{produto.nome}}</h4>
+            <p>Categoria: {{produto.categoria}} </p>
+            <p>Descrição do produto: {{produto.descricao}} </p>
+            <p>Valor: {{produto.valor}}</p>
+        </div>
+    </section>
+    {% endfor %}
+
+{% endblock %}
