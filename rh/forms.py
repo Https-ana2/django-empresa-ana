@@ -5,11 +5,12 @@ from django.contrib.auth.forms import UserCreationForm
 class CustomUserCreationForm(UserCreationForm):
     pass
 
+
 class ContatoModelForm(forms.ModelForm):
     
     class Meta:
         model = Contato
-        
+
         fields = ['nome', 'email','celular', 'assunto', 'descricao']
 
         widgets = {
@@ -19,7 +20,7 @@ class ContatoModelForm(forms.ModelForm):
             'assunto': forms.TextInput(attrs={'placeholder': 'Assunto da mensagem', 'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Digite sua mensagem...', 'class': 'form-control'}),
         }
-        
+
         labels = {
             'nome': 'Nome Completo',
             'email': 'Seu E-mail',

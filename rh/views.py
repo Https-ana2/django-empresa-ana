@@ -36,7 +36,6 @@ def registro_usuario_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-
             return redirect('login') 
     else:
         form = CustomUserCreationForm()
@@ -44,12 +43,13 @@ def registro_usuario_view(request):
     return render(request, 'accounts/register.html', {'form': form})
 
 def formulario_contato_view(request):
+
     if request.method == 'POST':
         form = ContatoModelForm(request.POST)
+        
         if form.is_valid():
-
             form.save()
-
+            
             return redirect('contato_sucesso')
     
     else:
