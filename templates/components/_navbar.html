@@ -1,8 +1,16 @@
 <nav class="menu">
-    <a href="{% url 'home' %}">Início</a>
-    <a href="{% url 'funcionarios' %}">Funcionários</a>
-    <a href="{% url 'produtos' %}">Produtos</a>
-    <a href="{% url 'clientes' %}">Clientes</a>
-    <a href="{% url 'posts' %}">Posts</a>
-    <a href="{% url 'contatos' %}">Contatos</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'home' %}">Início</a>
+        <a href="{% url 'funcionarios' %}">Funcionários</a>
+        <a href="{% url 'produtos' %}">Produtos</a>
+        <a href="{% url 'clientes' %}">Clientes</a>
+        <a href="{% url 'posts' %}">Posts</a>
+        <a href="{% url 'contatos' %}">Contatos</a>
+        <a href="{% url 'logout' %}">Sair ({{ user.username }})</a>
+    {% else %}
+        {# Links públicos #}
+        <a href="{% url 'posts' %}">Posts</a>
+        <a href="{% url 'contatos' %}">Contatos</a>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
 </nav>

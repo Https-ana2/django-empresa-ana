@@ -18,10 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+# Importa as views de autenticação
+from django.contrib.auth import views as auth_views 
 
 urlpatterns = [
+    # Mapeia a raiz (/) para a página de Login (NOVA LINHA)
+    path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'), 
+    
+    # URL de Logout (NOVA LINHA)
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    
     path('admin/', admin.site.urls),
-    path('', include('rh.urls')),
+    
+    # Move a aplicação 'rh' para a rota '/app/'
+    path('app/', include('rh.urls')),
+    
     path('blog/', include('blog.urls')),
 ]
 
